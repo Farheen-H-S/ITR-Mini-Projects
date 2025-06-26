@@ -82,7 +82,7 @@ while med_name != 'N':
 
 with open(f"{pat_name}.txt","w") as file:
     file.write(prescription)
-    for i in range(len(pat_med["Medicine"])): #another method -> enumerate(pat_med['Medicine']) -> same work
+    for i in enumerate(pat_med['Medicine']): 
         file.write(f"\n|{i+1}. {pat_med["Medicine"][i]["Med_name"][:25]}|{pat_med["Medicine"][i]["Time"]}| {pat_med["Medicine"][i]["Qty"]}| {pat_med["Medicine"][i]["Days"]}|")
         file.write(f"\n|{pat_med["Medicine"][i]["Med_name"][24:52].ljust(28)}|           |         |         |")
     file.write("\n"+("-"*62))
