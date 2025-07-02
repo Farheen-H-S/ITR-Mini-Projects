@@ -17,7 +17,6 @@ def place_symbol(grid_map,symb,grid_value):
     """
     print(grid_map)
 
-    #print(grid_values)
     print(f'''
          {grid_value[0]}  |  {grid_value[1]}  |  {grid_value[2]}
        _____ _____ _____
@@ -48,7 +47,6 @@ def place_symbol(grid_map,symb,grid_value):
     else:
         print("Invalid position!")
 
-    #print(grid_values)
     print(f'''
          {grid_value[0]}  |  {grid_value[1]}  |  {grid_value[2]}
        _____ _____ _____
@@ -131,7 +129,6 @@ def win(grid_value):
     
     #TIE
     if " " not in grid_value and state_win_tie == False:
-        #print("\nIt's a Tie!")
         return "True"
 
     return False #if no winner
