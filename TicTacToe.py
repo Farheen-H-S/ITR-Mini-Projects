@@ -133,6 +133,45 @@ def win(grid_value):
 
     return False #if no winner
 
+def execute_game(state_win_tie):
+    while not state_win_tie:
+        for name,symbol in zip([player1,player2], ["X","O"]):
+            if symbol == "X":
+                os.system("color 01") #Player X -> blue
+            else:
+                os.system("color 02") #Player O -> green
+
+            print(f"\n\n{name}'s turn: (Symbol: {symbol})")
+            place_symbol(grid_map,symbol,grid_value)
+
+            time.sleep(1)
+            os.system("cls") 
+            
+            state_win_tie = win(grid_value)
+            
+            if state_win_tie == "X": 
+                game_end = f"\n\t\t*** {player1} is winner!! ***"
+            elif state_win_tie == "O":
+                game_end = f"\n\t\t*** {player2} is winner!! ***"
+            elif state_win_tie == "True":
+                game_end = f"\n\t\t*** It is a Tie!! ***"
+
+            if state_win_tie or state_win_tie == "True": #if state is X/O(True) or "True"(Tie)
+                for color in color_list:
+                    os.system(f"color {color}")
+                    print(f'''
+                          {grid_value[0]}  |  {grid_value[1]}  |  {grid_value[2]}
+                        _____ _____ _____
+                          {grid_value[3]}  |  {grid_value[4]}  |  {grid_value[5]}
+                        _____ _____ _____
+                          {grid_value[6]}  |  {grid_value[7]}  |  {grid_value[8]}
+                    ''')
+                    print(game_end)
+
+                    time.sleep(1)
+                    os.system("cls")
+                break
+
 welcome_mssg = '''
     ____ WELCOME TO TIC-TAC-TOE ____\n
 Symbol for Player 1 is 'X'
@@ -143,56 +182,31 @@ as shown in the MAP to place your symbol
 
 grid_map = '''
    ** MAP **
- 1  |  2  |  3
+  1  |  2  |  3
 _____ _____ _____
- 4  |  5  |  6 
+  4  |  5  |  6 
 _____ _____ _____
- 7  |  8  |  9 
+  7  |  8  |  9 
 '''
 
 print(welcome_mssg)
 
-state_win_tie = False
-
 color_list = ["01","02","03","04","05","06"] #blue, green, cyan/aqua, red, magenta/purple, yellow
 
-player1 = input("Enter player 1 name: ")
-player2 = input("Enter player 2 name: ")
+player1 = input("Enter player 1 name: ").title()
+player2 = input("Enter player 2 name: ").title()
 
-while not state_win_tie:
-    for name,symbol in zip([player1,player2], ["X","O"]):
-        if symbol == "X":
-            os.system("color 01") #Player X -> blue
-        else:
-            os.system("color 02") #Player O -> green
-
-        print(f"\n\n{name}'s turn: (Symbol: {symbol})")
-        place_symbol(grid_map,symbol,grid_value)
-
-        time.sleep(1)
-        os.system("cls") 
-        
-        state_win_tie = win(grid_value)
-        
-        if state_win_tie == "X": 
-            game_end = f"\n\t\t*** {player1} is winner!! ***"
-        elif state_win_tie == "O":
-            game_end = f"\n\t\t*** {player2} is winner!! ***"
-        elif state_win_tie == "True":
-            game_end = f"\n\t\t*** It is a Tie!! ***"
-
-        if state_win_tie or state_win_tie == "True": #if state is X/O(True) or "True"(Tie)
-            for color in color_list:
-                os.system(f"color {color}")
-                print(f'''
-                      {grid_value[0]}  |  {grid_value[1]}  |  {grid_value[2]}
-                    _____ _____ _____
-                      {grid_value[3]}  |  {grid_value[4]}  |  {grid_value[5]}
-                    _____ _____ _____
-                      {grid_value[6]}  |  {grid_value[7]}  |  {grid_value[8]}
-                ''')
-                print(game_end)
-
-                time.sleep(1)
-                os.system("cls")
+while True:
+    try:
+        play = input("\nPlay? Yes(Y) / No(N): ").upper()
+        if play == "Y":
+            grid_value = [" "] * 9
+            state_win_tie = False
+            execute_game(state_win_tie)
+        elif play == "N":
+            print("Thanks!")
             break
+        else:
+            raise Exception("Please enter a valid choice")
+    except Exception as e:
+        print(f"Error: {e}")
