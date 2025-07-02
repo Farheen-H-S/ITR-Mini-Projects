@@ -1,5 +1,5 @@
-#A simple console-based Tic Tac Toe game for 2 players, developed using basic programming concepts like variables, datatypes, conditional & looping statements, functions
-
+#Made for Windows (as it uses Windows-specific commands such as 'cls'
+# and Windows-specific color codes instead of ANSI escape codes
 import os
 import time
 
