@@ -1,4 +1,4 @@
-#Made for Windows (as it uses Windows-specific commands such as 'cls'
+#Made for Windows Terminal (as it uses Windows-specific commands such as 'cls'
 # and Windows-specific color codes instead of ANSI escape codes
 import os
 import time
@@ -134,10 +134,19 @@ def win(grid_value):
     return False #if no winner
 
 def execute_game(state_win_tie):
+    """
+        Argument (as String): state of winning/tie condition
+
+        Input (as Integer): None
+
+        It executes game logic, changes terminal color & clears it,
+
+        Returns: Value of grids
+    """
     while not state_win_tie:
         for name,symbol in zip([player1,player2], ["X","O"]):
             if symbol == "X":
-                os.system("color 01") #Player X -> blue
+                os.system("color 06") #Player X -> yellow
             else:
                 os.system("color 02") #Player O -> green
 
@@ -191,15 +200,16 @@ _____ _____ _____
 
 print(welcome_mssg)
 
-color_list = ["01","02","03","04","05","06"] #blue, green, cyan/aqua, red, magenta/purple, yellow
 
-player1 = input("Enter player 1 name: ").title()
-player2 = input("Enter player 2 name: ").title()
+#blue, green, cyan/aqua, red, magenta/purple, yellow
+color_list = ["01","02","03","04","05","06"]
 
 while True:
     try:
         play = input("\nPlay? Yes(Y) / No(N): ").upper()
         if play == "Y":
+            player1 = input("\nEnter player 1 name: ").title()
+            player2 = input("Enter player 2 name: ").title()
             grid_value = [" "] * 9
             state_win_tie = False
             execute_game(state_win_tie)
