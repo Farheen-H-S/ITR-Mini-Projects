@@ -10,3 +10,5 @@ Internship domain: Full Stack Web Development (using Django)
   - A Python-based program simulating an ATM with PIN authentication, balance inquiry, deposit, and withdrawal functionality, using JSON for data storage
 4. Grocery Billing System:
   - A simple Python-based grocery billing system that generates bills with customer name, items with prices, and total cost, utilizing basic programming concepts and file I/O
+5. Prescription Writer:
+  - A simple GUI based prescription writer that takes medicine name as input and stores in a text file (using Tkinter) 
