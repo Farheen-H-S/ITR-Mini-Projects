@@ -72,7 +72,7 @@ def win(grid_value):
         Tie condition: No " " symbol in grid and no same symbol in above grid position combination
 
         Returns: "X" if above condition is satisfied & symbol is "X"
-                 "O" if above condition is satisfied & symbol is not "X", i.e. "O"
+                 "O" if above condition is satisfied & symbol is not "X", i.e. symbol is "O"
                  "True" if Tie condition is satisfied
                  False if NO condition is satisfied
     """
@@ -165,7 +165,7 @@ def execute_game(state_win_tie):
             elif state_win_tie == "True":
                 game_end = f"\n\t\t*** It is a Tie!! ***"
 
-            if state_win_tie or state_win_tie == "True": #if state is X/O(True) or "True"(Tie)
+            if state_win_tie or state_win_tie == "True": #if state is X/O(Win) or "True"(Tie)
                 for color in color_list:
                     os.system(f"color {color}")
                     print(f'''
